@@ -55,6 +55,6 @@ def get_serie_from_txt(station,station_obj, DATA_DIR = None):
 
 
 if __name__ == '__main__':
-    station_infos = 'est_fluvio.xls'
-    data_dir =  'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada'
+    station_infos = os.path.join(os.getcwd(),'DadosDeEntrada\\est_fluvio.xls')
+    data_dir =  os.path.join(os.getcwd(),'DadosDeEntrada')
     create_station(station_infos,data_dir)

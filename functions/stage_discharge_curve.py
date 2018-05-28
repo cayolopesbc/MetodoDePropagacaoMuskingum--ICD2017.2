@@ -4,7 +4,6 @@ import sys
 from collections import OrderedDict
 import numpy as np
 
-#inp = 'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada/CurvaChave.txt'
 
 def coef_from_txt(stage_data,filename):
     stations_coef={}
@@ -36,7 +35,7 @@ def coef_from_txt(stage_data,filename):
     return stations_coef
         
 
-
+#Função que faz a conversão cota x vazão
 def curva_chave(stage_data,filename = None):
     print("\n----Vazões a partir  da Curva-Chave-----")
     stations_coef = coef_from_txt(stage_data,filename = filename)

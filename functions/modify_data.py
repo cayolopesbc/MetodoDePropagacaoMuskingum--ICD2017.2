@@ -100,9 +100,9 @@ def get_stretch_data(station_data, stretch_input = None):
 
 if __name__ == '__main__':
 
-    file_path = 'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada/PCDS.txt'
-    data_path =  'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada'
-    cc= 'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada/CurvaChave.txt'
+    file_path = os.path.join(os.getcwd(),'DadosDeEntrada\\PCDS.txt')
+    data_path =  os.path.join(os.getcwd(),'DadosDeEntrada')
+    cc = os.path.join(os.getcwd(),'DadosDeEntrada\\CurvaChave.txt')
 
     data = gd.data_read_from_txt(file_station = file_path, DATA_DIR = data_path, f = '0.25H')
     event = get_data_event(data, period = ['10-05-2017','15-05-2017'])

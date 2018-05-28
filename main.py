@@ -20,10 +20,11 @@ from ICDR.models import *
 
 if __name__ == '__main__':
 
-    file_path = 'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada/PCDS.txt'
-    data_path =  'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada'
-    cc = 'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada/CurvaChave.txt'
-    station_infos = 'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada/est_fluvio.xls'
+    file_path = os.path.join(os.getcwd(),'DadosDeEntrada\\PCDS.txt')
+    data_path = os.path.join(os.getcwd(),'DadosDeEntrada')
+    cc = os.path.join(os.getcwd(),'DadosDeEntrada\\CurvaChave.txt')
+    station_infos = os.path.join(os.getcwd(),'DadosDeEntrada\\est_fluvio.xls')
+
     #create_station(station_infos,data_path)
     
     data = data_read_from_txt(file_station = file_path, DATA_DIR = data_path, f = '0.25H')

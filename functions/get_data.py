@@ -30,7 +30,7 @@ def get_station_info(station_code):
     return station_info
 
 #Funçao que auxilia a leitura de dados oriundos de arquivos .txt
-def get_station_data(file_path,station_list,data_type,station_data,station_in,f):
+def get_station_data(file_path,station_list,data_type,station_data,f):
 
     for station in station_list:
 
@@ -54,7 +54,7 @@ def get_station_data(file_path,station_list,data_type,station_data,station_in,f)
             info['DataType'] = data_type[1:]
             station_data.append([station,[data,info]])
 
-    return station_data,station_in
+    return station_data
 
 #Função para entrada de Dados tipo: DATA/HORA - DADO de um conjunto de arquivos .txt
 
@@ -71,16 +71,15 @@ def data_read_from_txt(file_station = None, DATA_DIR = None,tp = None,f = '0.25H
     #os arquivos que contém os dados de cota dos postos
     station_data = []
     no_tp_data=[]
-    station_in=[]
 
     for file in os.listdir(DATA_DIR):
         file_path = os.path.join(DATA_DIR,file)
-        station_data,station_in = get_station_data(file_path, station_list, data_type,station_data,station_in,f)
+        station_data,station_in = get_station_data(file_path, station_list, data_type,station_data,f)
     station_data = OrderedDict(station_data)
     
     # Verifica quais postos não apresentam
     for station in station_list:
-        if station not in station_data:
+        if station not in station_data.keys():
             no_tp_data.append(station)        
     
     if len(no_tp_data)!=0:
@@ -124,7 +123,6 @@ def data_read_from_db(file_station = None, f = '0.25H'):
         
 
 if __name__ == '__main__':
-    file_path = 'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada/PCDS.txt'
-    data_path =  'C:/Users/cayoh/Google Drive/Graduação/10ºP/ICD/Tarefas/django-db/Django-ORM-master/DadosDeEntrada'
+    file_path = os.path.join(os.getcwd(),'DadosDeEntrada\\PCDS.txt')
+    data_path =  os.path.join(os.getcwd(),'DadosDeEntrada')
     data = data_read_from_txt(file_station = file_path, DATA_DIR = data_path, f = '0.25H')
-
